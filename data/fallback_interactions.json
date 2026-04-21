@@ -1,0 +1,202 @@
+[
+  {
+    "drug_a": "Warfarin",
+    "drug_b": "Aspirin",
+    "severity": "high",
+    "mechanism": "Additive anticoagulation and antiplatelet effects increase GI and intracranial bleeding risk",
+    "clinical_recommendation": "Avoid combination unless essential; monitor INR and bleeding signs closely",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Warfarin",
+    "drug_b": "Ibuprofen",
+    "severity": "high",
+    "mechanism": "NSAID-related platelet dysfunction and GI mucosal injury with possible CYP2C9 interaction increase bleeding",
+    "clinical_recommendation": "Prefer safer analgesic; if unavoidable, increase INR and bleeding monitoring",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Metformin",
+    "drug_b": "Contrast Dye",
+    "severity": "high",
+    "mechanism": "Renal function decline after iodinated contrast can precipitate metformin-associated lactic acidosis",
+    "clinical_recommendation": "Hold metformin around contrast exposure and reassess renal function before restart",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Simvastatin",
+    "drug_b": "Amiodarone",
+    "severity": "high",
+    "mechanism": "CYP3A4 inhibition elevates simvastatin concentration, increasing myopathy and rhabdomyolysis risk",
+    "clinical_recommendation": "Use lower statin dose or alternative statin and monitor CK/muscle symptoms",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Lisinopril",
+    "drug_b": "Spironolactone",
+    "severity": "high",
+    "mechanism": "Additive RAAS blockade and potassium retention can cause life-threatening hyperkalemia",
+    "clinical_recommendation": "Monitor potassium and renal function frequently; avoid in high-risk patients",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Digoxin",
+    "drug_b": "Amiodarone",
+    "severity": "high",
+    "mechanism": "P-glycoprotein inhibition increases digoxin exposure and toxicity risk",
+    "clinical_recommendation": "Reduce digoxin dose and monitor levels/ECG",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Clopidogrel",
+    "drug_b": "Omeprazole",
+    "severity": "medium",
+    "mechanism": "CYP2C19 inhibition reduces clopidogrel activation and antiplatelet efficacy",
+    "clinical_recommendation": "Use pantoprazole or separate gastroprotection strategy",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Sertraline",
+    "drug_b": "Tramadol",
+    "severity": "high",
+    "mechanism": "Excess serotonergic activity increases serotonin syndrome risk",
+    "clinical_recommendation": "Avoid combination or monitor for agitation, hyperreflexia, and autonomic instability",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Ciprofloxacin",
+    "drug_b": "Theophylline",
+    "severity": "high",
+    "mechanism": "CYP1A2 inhibition raises theophylline levels and toxicity risk",
+    "clinical_recommendation": "Monitor serum levels and reduce theophylline dose",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Methotrexate",
+    "drug_b": "Ibuprofen",
+    "severity": "high",
+    "mechanism": "Reduced renal clearance increases methotrexate exposure and hematologic toxicity",
+    "clinical_recommendation": "Avoid chronic co-administration; monitor CBC and renal function",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Lithium",
+    "drug_b": "Ibuprofen",
+    "severity": "high",
+    "mechanism": "Reduced renal lithium clearance increases neurotoxicity risk",
+    "clinical_recommendation": "Avoid NSAID or monitor lithium level closely after initiation",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Phenytoin",
+    "drug_b": "Fluconazole",
+    "severity": "high",
+    "mechanism": "CYP2C9 inhibition increases phenytoin concentration and toxicity",
+    "clinical_recommendation": "Check phenytoin levels and adjust dose",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Rifampicin",
+    "drug_b": "Oral Contraceptives",
+    "severity": "high",
+    "mechanism": "CYP3A4 induction reduces contraceptive hormone exposure and efficacy",
+    "clinical_recommendation": "Use additional non-hormonal contraception during and after therapy",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Azithromycin",
+    "drug_b": "Amiodarone",
+    "severity": "high",
+    "mechanism": "Additive QT interval prolongation increases torsades de pointes risk",
+    "clinical_recommendation": "Avoid if possible and monitor ECG/electrolytes",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Carbamazepine",
+    "drug_b": "Erythromycin",
+    "severity": "high",
+    "mechanism": "CYP3A4 inhibition increases carbamazepine levels and CNS toxicity",
+    "clinical_recommendation": "Use alternative macrolide or monitor levels closely",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Atenolol",
+    "drug_b": "Verapamil",
+    "severity": "high",
+    "mechanism": "Additive AV nodal suppression can cause bradycardia and heart block",
+    "clinical_recommendation": "Avoid combination unless specialist-supervised with ECG monitoring",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Sildenafil",
+    "drug_b": "Nitrates",
+    "severity": "high",
+    "mechanism": "Excess cGMP-mediated vasodilation can trigger profound hypotension",
+    "clinical_recommendation": "Contraindicated: do not co-administer",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Codeine",
+    "drug_b": "Diazepam",
+    "severity": "high",
+    "mechanism": "Additive CNS and respiratory depression",
+    "clinical_recommendation": "Avoid or use minimum doses with close respiratory monitoring",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Furosemide",
+    "drug_b": "Gentamicin",
+    "severity": "high",
+    "mechanism": "Additive ototoxicity and nephrotoxicity potential",
+    "clinical_recommendation": "Avoid where possible and monitor renal function/hearing",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Doxycycline",
+    "drug_b": "Antacids",
+    "severity": "medium",
+    "mechanism": "Chelation reduces doxycycline gastrointestinal absorption",
+    "clinical_recommendation": "Separate dosing by at least 2 to 4 hours",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Warfarin",
+    "drug_b": "Amiodarone",
+    "severity": "high",
+    "mechanism": "CYP2C9 inhibition increases warfarin effect and INR",
+    "clinical_recommendation": "Pre-emptive warfarin dose reduction with frequent INR checks",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Tacrolimus",
+    "drug_b": "Voriconazole",
+    "severity": "high",
+    "mechanism": "CYP3A4 inhibition markedly increases tacrolimus exposure",
+    "clinical_recommendation": "Major tacrolimus dose reduction and therapeutic drug monitoring required",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Clarithromycin",
+    "drug_b": "Simvastatin",
+    "severity": "high",
+    "mechanism": "Strong CYP3A4 inhibition elevates simvastatin concentrations and rhabdomyolysis risk",
+    "clinical_recommendation": "Temporarily hold simvastatin or switch statin; monitor muscle toxicity",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Spironolactone",
+    "drug_b": "Trimethoprim-Sulfamethoxazole",
+    "severity": "high",
+    "mechanism": "Additive potassium retention can precipitate severe hyperkalemia",
+    "clinical_recommendation": "Avoid combination where possible; monitor potassium and renal function",
+    "source_confidence": "high"
+  },
+  {
+    "drug_a": "Linezolid",
+    "drug_b": "Sertraline",
+    "severity": "high",
+    "mechanism": "MAO inhibition with serotonergic antidepressant raises serotonin syndrome risk",
+    "clinical_recommendation": "Avoid concomitant use or provide specialist-monitored washout strategy",
+    "source_confidence": "high"
+  }
+]

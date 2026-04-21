@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EvoDoc Clinical Decision Support</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>EvoDoc Clinical Decision Support</h1>
+      <p>Medication safety intelligence for real-world clinic prescribing.</p>
+      <div class="header-tools">
+        <div class="select-wrap">
+          <label for="preset-select">Demo Presets</label>
+          <select id="preset-select">
+            <option value="none">Choose a preset...</option>
+            <option value="polypharmacy">Polypharmacy senior patient</option>
+            <option value="allergy">Allergy conflict case</option>
+            <option value="renal">Renal impairment case</option>
+          </select>
+        </div>
+        <button id="refresh-health-btn" type="button" class="secondary">Refresh System Health</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Analyze Prescription</h2>
+      <form id="analyze-form">
+        <div class="grid">
+          <label class="field-block">
+            Proposed medicines
+            <div class="tag-input" id="proposed-tags" data-placeholder="Type medicine and press Enter"></div>
+            <input id="proposed-entry" class="tag-entry" type="text" placeholder="e.g., Warfarin" />
+          </label>
+
+          <label class="field-block">
+            Current medications
+            <div class="tag-input" id="current-tags" data-placeholder="Type medicine and press Enter"></div>
+            <input id="current-entry" class="tag-entry" type="text" placeholder="e.g., Omeprazole" />
+          </label>
+
+          <label class="field-block">
+            Known allergies
+            <div class="tag-input" id="allergies-tags" data-placeholder="Type allergy and press Enter"></div>
+            <input id="allergies-entry" class="tag-entry" type="text" placeholder="e.g., Penicillin" />
+          </label>
+
+          <label class="field-block">
+            Conditions
+            <div class="tag-input" id="conditions-tags" data-placeholder="Type condition and press Enter"></div>
+            <input id="conditions-entry" class="tag-entry" type="text" placeholder="e.g., Chronic kidney disease" />
+          </label>
+
+          <label>
+            Age
+            <input id="age" type="number" min="1" max="129" required value="45" />
+          </label>
+
+          <label>
+            Weight (kg)
+            <input id="weight" type="number" min="2" max="299" step="0.1" required value="70" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="submit-btn" type="submit">Run Safety Analysis</button>
+          <button id="sample-btn" type="button" class="secondary">Load Sample</button>
+          <button id="export-json-btn" type="button" class="secondary" disabled>Export JSON</button>
+          <button id="print-report-btn" type="button" class="secondary" disabled>Print Report</button>
+          <div id="loading" class="loading hidden" aria-live="polite">
+            <span class="spinner"></span>
+            <span>Analyzing prescription...</span>
+          </div>
+        </div>
+      </form>
+      <p id="form-error" class="error hidden"></p>
+    </section>
+
+    <section class="card hidden" id="patient-card">
+      <h2>Patient Summary</h2>
+      <div id="patient-summary" class="patient-grid"></div>
+      <div id="history-flags" class="flags-row"></div>
+    </section>
+
+    <section class="decision-banner hidden" id="decision-banner"></section>
+
+    <section class="card hidden" id="timeline-card">
+      <h2>Clinical Decision Timeline</h2>
+      <ol id="decision-timeline" class="timeline"></ol>
+    </section>
+
+    <section class="card hidden" id="recommendations-card">
+      <h2>Action Center</h2>
+      <div id="recommendations" class="recommendation-cards"></div>
+    </section>
+
+    <section class="card hidden" id="summary-card">
+      <h2>Clinical Safety Status</h2>
+      <div id="summary" class="summary"></div>
+    </section>
+
+    <section class="card hidden" id="confidence-card">
+      <h2>Confidence Explainability</h2>
+      <div id="confidence-breakdown" class="confidence-grid"></div>
+    </section>
+
+    <section class="card hidden" id="risk-matrix-card">
+      <h2>Risk Heatmap & Interaction Matrix</h2>
+      <div class="risk-controls">
+        <div id="severity-heatmap" class="heatmap"></div>
+        <div class="filters" id="severity-filters">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="critical">Critical only</button>
+          <button type="button" class="filter-btn" data-filter="high">High only</button>
+          <button type="button" class="filter-btn" data-filter="history">History conflicts</button>
+        </div>
+      </div>
+      <div class="matrix-wrap">
+        <table class="risk-matrix-table" id="risk-matrix-table">
+          <thead>
+            <tr>
+              <th>Pair</th>
+              <th>Severity</th>
+              <th>Mechanism</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody id="risk-matrix-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card hidden severity-card critical" id="critical-alerts-card">
+      <h2>Critical Alerts</h2>
+      <div id="critical-alerts"></div>
+    </section>
+
+    <section class="card hidden severity-card high" id="high-risk-card">
+      <h2>High Risk Interactions</h2>
+      <div id="high-risk-interactions"></div>
+    </section>
+
+    <section class="card hidden" id="interactions-card">
+      <h2>Other Findings</h2>
+      <details id="other-findings-details">
+        <summary>View medium/low risk findings</summary>
+        <div id="other-findings" class="findings-space"></div>
+      </details>
+    </section>
+
+    <section class="card hidden" id="risk-factors-card">
+      <h2>Risk Factors</h2>
+      <ul id="risk-factors" class="risk-factors"></ul>
+    </section>
+
+    <section class="card hidden" id="reconciliation-card">
+      <h2>Medication Reconciliation Workspace</h2>
+      <div id="reconciliation-content" class="reconciliation-grid"></div>
+    </section>
+
+    <section class="card" id="compare-card">
+      <h2>Scenario Compare Mode</h2>
+      <p class="muted">Compare current plan against an alternative proposed medicines list.</p>
+      <label class="field-block">
+        Alternative proposed medicines
+        <div class="tag-input" id="compare-tags" data-placeholder="Type medicine and press Enter"></div>
+        <input id="compare-entry" class="tag-entry" type="text" placeholder="e.g., Clopidogrel" />
+      </label>
+      <div class="actions">
+        <button id="run-compare-btn" type="button">Compare Scenarios</button>
+      </div>
+      <div id="compare-result" class="compare-result muted">Run a primary analysis first, then compare.</div>
+    </section>
+
+    <section class="card" id="health-card">
+      <h2>System Runtime Health</h2>
+      <div id="health-widget" class="health-grid"></div>
+    </section>
+
+    <section class="card hidden" id="validation-card">
+      <h2>System Validation</h2>
+      <ul class="validation-list">
+        <li>✔ AI + Rule-based validation</li>
+        <li>✔ Clinically verified interactions</li>
+        <li>✔ Safe local processing</li>
+      </ul>
+      <div id="analysis-meta" class="analysis-meta"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
